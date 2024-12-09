@@ -1,0 +1,25 @@
+# ninja log v6
+8	169	7554649767224250	CMakeFiles/parcial.dir/main.cpp.obj.ddi	5fe7e7b9f403957e
+170	193	7554649768844709	CMakeFiles/parcial.dir/CXX.dd	72288631a04f4491
+725	817	7554649774395899	parcial.exe	61aabd7b034f0f9c
+170	193	7554649768844709	C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/parcial.dir/CXXModules.json	72288631a04f4491
+170	193	7554649768844709	CMakeFiles/parcial.dir/main.cpp.obj.modmap	72288631a04f4491
+194	724	7554649769094670	CMakeFiles/parcial.dir/main.cpp.obj	ed9154a32a06ac4e
+9	169	7554651085939625	CMakeFiles/parcial.dir/main.cpp.obj.ddi	5fe7e7b9f403957e
+170	195	7554651087549999	CMakeFiles/parcial.dir/CXX.dd	72288631a04f4491
+170	195	7554651087549999	C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/parcial.dir/CXXModules.json	72288631a04f4491
+170	195	7554651087549999	CMakeFiles/parcial.dir/main.cpp.obj.modmap	72288631a04f4491
+196	745	7554651087810035	CMakeFiles/parcial.dir/main.cpp.obj	ed9154a32a06ac4e
+746	839	7554651093301231	parcial.exe	61aabd7b034f0f9c
+10	164	7554651826613233	CMakeFiles/parcial.dir/main.cpp.obj.ddi	5fe7e7b9f403957e
+164	189	7554651828153661	CMakeFiles/parcial.dir/CXX.dd	72288631a04f4491
+164	189	7554651828153661	C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/parcial.dir/CXXModules.json	72288631a04f4491
+164	189	7554651828153661	CMakeFiles/parcial.dir/main.cpp.obj.modmap	72288631a04f4491
+190	749	7554651828403632	CMakeFiles/parcial.dir/main.cpp.obj	ed9154a32a06ac4e
+750	844	7554651834004852	parcial.exe	61aabd7b034f0f9c
+9	192	7554690272068698	CMakeFiles/parcial.dir/main.cpp.obj.ddi	5fe7e7b9f403957e
+193	227	7554690273909185	CMakeFiles/parcial.dir/CXX.dd	72288631a04f4491
+193	227	7554690273909185	C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/parcial.dir/CXXModules.json	72288631a04f4491
+193	227	7554690273909185	CMakeFiles/parcial.dir/main.cpp.obj.modmap	72288631a04f4491
+228	848	7554690274265502	CMakeFiles/parcial.dir/main.cpp.obj	ed9154a32a06ac4e
+849	958	7554690280472681	parcial.exe	61aabd7b034f0f9c

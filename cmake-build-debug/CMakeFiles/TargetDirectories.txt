@@ -1,0 +1,3 @@
+C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/parcial.dir
+C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/rebuild_cache.dir
