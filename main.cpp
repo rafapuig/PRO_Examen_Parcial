@@ -8,10 +8,7 @@ using namespace std;
  * Consta de un campo "nombre" de tipo string
  * y campo "nota" de tipo float
  */
-struct Alumno {
-    string nombre;  // Campo nombre (string)
-    float nota;     // Campo nota (float)
-};
+struct //TODO
 
 
 /**
@@ -21,12 +18,7 @@ struct Alumno {
  * @return Un valor entre 0 y 10, correspondiente a una nota numérica
  */
 float inputNota() {
-    float nota;
-    do {
-        std::cout << "Introduce una nota numerica de 0 a 10:";
-        cin >> nota;
-    } while (nota < 0 || nota > 10);
-    return nota;
+    //TODO
 }
 
 
@@ -37,12 +29,7 @@ float inputNota() {
  * @return Un string con el nombre y apellidos
  */
 string inputNombre() {
-    string nombre;
-    do {
-        cout << "Introduce un nombre para el alumno:";
-        getline(cin, nombre);
-    } while (nombre.empty());
-    return nombre;
+    //TODO
 }
 
 
@@ -55,12 +42,8 @@ string inputNombre() {
  * @return Puntero a la memoria reservada dinámicamente
  * para almacenar una estructura de tipo Alumno
  */
-Alumno *inputAlumno() {
-    Alumno *alumno = new Alumno;
-    cout << "Introduce datos del alumno...\n";
-    alumno->nombre = inputNombre();
-    alumno->nota = inputNota();
-    return alumno;
+/*...*/ inputAlumno() {
+    //TODO
 }
 
 
@@ -72,11 +55,7 @@ Alumno *inputAlumno() {
  * El campo alumnos servirá para apuntar a memoria dinámica, concretamente
  * debe manejar un "array" de punteros a estructura de tipo Alumno
  */
-struct ListaAlumnos {
-    int capacidad;
-    int num;
-    Alumno **alumnos;
-};
+//TODO
 
 
 /**
@@ -90,12 +69,8 @@ struct ListaAlumnos {
  * @return devuelve un puntero que apunta a la zona de memoria reservada para
  * los datos de la estructura ListaAlumnos
  */
-ListaAlumnos *crearLista(const int capacidad) {
-    ListaAlumnos *lista = new ListaAlumnos;
-    lista->capacidad = capacidad;
-    lista->num = 0;
-    lista->alumnos = new Alumno *[lista->capacidad];
-    return lista;
+/*...*/ crearLista(/*...*/) {
+    //TODO
 }
 
 
@@ -106,8 +81,8 @@ ListaAlumnos *crearLista(const int capacidad) {
  * @return valor bool verdadero si la lista no tiene ningún alumno añadido o
  * falso si la lista ya tiene al menos un alumno
  */
-bool estaVacia(const ListaAlumnos *lista) {
-    return lista->num == 0;
+/*...*/ estaVacia(/*...*/) {
+    //TODO
 }
 
 
@@ -118,8 +93,8 @@ bool estaVacia(const ListaAlumnos *lista) {
  * @return Valor booleano verdadero si la lista ha llegado al máximo de su capacidad o
  * falso si la lista todavía permite añadir algún alumno más
  */
-bool estaLlena(const ListaAlumnos *lista) {
-    return lista->num == lista->capacidad;
+/*...*/ estaLlena(/*...*/) {
+    //TODO
 }
 
 
@@ -130,11 +105,8 @@ bool estaLlena(const ListaAlumnos *lista) {
  * @return Verdadero si se ha podido añadir el alumno porque la lista no estaba
  * llena todavía o falso en caso contrario
  */
-bool addAlumno(ListaAlumnos *lista, Alumno *alumno) {
-    if (estaLlena(lista)) return false;
-    lista->alumnos[lista->num] = alumno;
-    lista->num++;
-    return true;
+/*...*/ addAlumno(/*...*/) {
+    //TODO
 }
 
 
@@ -144,12 +116,8 @@ bool addAlumno(ListaAlumnos *lista, Alumno *alumno) {
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  * @return Un float con el valor calculado de la nota media de los alumnos
  */
-float getNotaMedia(const ListaAlumnos* lista) {
-    float suma = 0;
-    for (int i = 0; i < lista->num; i++) {
-        suma += lista->alumnos[i]->nota;
-    }
-    return suma / lista->num;
+/*...*/ getNotaMedia(/*...*/) {
+    //TODO
 }
 
 
@@ -161,15 +129,8 @@ float getNotaMedia(const ListaAlumnos* lista) {
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  * @return Un puntero a la estructura de tipo Alumno que en la lista tiene mayor nota
  */
-Alumno *getAlumnoMaxNota(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) return nullptr;
-    Alumno *max = lista->alumnos[0];
-    for (int i = 1; i < lista->num; i++) {
-        if (lista->alumnos[i]->nota > max->nota) {
-            max = lista->alumnos[i];
-        }
-    }
-    return max;
+/*...*/ getAlumnoMaxNota(/*...*/) {
+    //TODO
 }
 
 
@@ -186,14 +147,8 @@ Alumno *getAlumnoMaxNota(const ListaAlumnos *lista) {
  * @return Un bool con valor true si en la lista al menos un alumno tiene una
  * nota inferior a 5 y falso en caso contrario o si la lista esta vacía
  */
-bool existeAlumnoSuspenso(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) return false;
-    for (int i = 0; i < lista->num; i++) {
-        if (lista->alumnos[i]->nota < 5) {
-            return true;
-        }
-    }
-    return false;
+/*...*/ existeAlumnoSuspenso(/*...*/) {
+    //TODO
 }
 
 
@@ -206,12 +161,8 @@ bool existeAlumnoSuspenso(const ListaAlumnos *lista) {
  * alumno en la lista
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  */
-void addAlumno(ListaAlumnos *lista) {
-    if (estaLlena(lista)) {
-        std::cout << "Lista llena, no se puede insertar el alumno" << endl;
-        return;
-    }
-    addAlumno(lista, inputAlumno());
+/*...*/ addAlumno(/*...*/) {
+    //TODO
 }
 
 
@@ -222,7 +173,7 @@ void addAlumno(ListaAlumnos *lista) {
  * al alumno que se va a mostrar por la consola
  */
 void printAlumno(const Alumno *alumno) {
-    cout << "Nombre:" << alumno->nombre << "\tNota:" << alumno->nota << endl;
+    //TODO
 }
 
 
@@ -236,14 +187,7 @@ void printAlumno(const Alumno *alumno) {
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  */
 void printLista(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
-        cout << "Lista vacia!!!" << endl;
-        return;
-    }
-    cout << "ALUMNOS:" << endl;
-    for (int i = 0; i < lista->num; i++) {
-        printAlumno(lista->alumnos[i]);
-    }
+    //TODO
 }
 
 
@@ -259,12 +203,7 @@ void printLista(const ListaAlumnos *lista) {
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  */
 void printNotaMedia(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
-        cout << "Lista vacia, no se puede calcular ninguna media!!!" << endl;
-        return;
-    }
-    float media = getNotaMedia(lista);
-    cout << "Nota media: " << media << endl;
+    //TODO
 }
 
 
@@ -281,14 +220,7 @@ void printNotaMedia(const ListaAlumnos *lista) {
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  */
 void printAlumnoMaxNota(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
-        cout << "Lista vacia, no se buscara alumno!!!" << endl;
-        return;
-    }
-    Alumno *alumno = getAlumnoMaxNota(lista);
-    if (alumno != nullptr) {
-        printAlumno(alumno);
-    }
+    //TODO
 }
 
 
@@ -306,12 +238,7 @@ void printAlumnoMaxNota(const ListaAlumnos *lista) {
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  */
 void printCheckAlumnoSuspenso(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
-        cout << "Lista vacia, no procede!!!" << endl;
-        return;
-    }
-    bool alumnoSuspenso = existeAlumnoSuspenso(lista);
-    cout << "Hay alumnos suspendidos: " << (alumnoSuspenso ? "Si" : "No") << endl;
+    //TODO
 }
 
 
@@ -349,28 +276,13 @@ void printMenu() {
  */
 int main() {
     constexpr int MAX_ALUMNOS = 10;
-    ListaAlumnos *lista = crearLista(MAX_ALUMNOS);
 
-    int opcion;
-    do {
-        printMenu();
-        cin >> opcion;
-        cin.get();
-        switch (opcion) {
-            case 1: addAlumno(lista);
-                break;
-            case 2: printLista(lista);
-                break;
-            case 3: printNotaMedia(lista);
-                break;
-            case 4: printAlumnoMaxNota(lista);
-                break;
-            case 5: printCheckAlumnoSuspenso(lista);
-                break;
-        }
-    } while (opcion != 0);
+    // Crear la lista de alumnos y guardar en una variable
 
-    delete[] lista->alumnos;
-    delete lista;
+
+    // Bucle del menu de opciones y proceso de la opción elegida
+
+    // liberación de la memoria
+
     return 0;
 }
