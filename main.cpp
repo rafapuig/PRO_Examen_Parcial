@@ -13,6 +13,7 @@ struct Alumno {
     float nota;     // Campo nota (float)
 };
 
+
 /**
  * Pide la nota del alumno mediante entrada por teclado
  * Comprueba que la nota está entre 0 y 10 y si no es así
@@ -27,6 +28,7 @@ float inputNota() {
     } while (nota < 0 || nota > 10);
     return nota;
 }
+
 
 /**
  * Pide el nombre y apellidos del alumno mediante entrada por teclado
@@ -43,13 +45,14 @@ string inputNombre() {
     return nombre;
 }
 
+
 /**
  * Apoyándose en los métodos inputNota e inputNombre
  * obtiene los datos de un alumno: nombre y nota para crear una
  * estructura Alumno de manera dinámica, inicializar sus campos nombre
  * y apellido con los datos introducidos por el usuario,
  * para finalmente devolver un puntero al Alumno
- * @return puntero a la memoria reservada dinámicamente
+ * @return Puntero a la memoria reservada dinámicamente
  * para almacenar una estructura de tipo Alumno
  */
 Alumno *inputAlumno() {
@@ -59,6 +62,7 @@ Alumno *inputAlumno() {
     alumno->nota = inputNota();
     return alumno;
 }
+
 
 /**
  * Estructura para manejar una lista de alumnos
@@ -73,6 +77,26 @@ struct ListaAlumnos {
     int num;
     Alumno **alumnos;
 };
+
+
+/**
+ * A partir de valor entero proporcionado como argumento de llamada que indica
+ * el máximo número de alumnos que queremos alojar en la lista
+ * reserva memoria dinámicamente para crear la estructura ListaAlumnos
+ * e inicializa apropiadamente sus campos capacidad y num
+ * además de reservar dinámicamente la memoria para los punteros a las
+ * estructuras Alumno necesarias de manera contigua en memoria
+ * @param capacidad Número máximo de alumnos que queremos que tenga la lista
+ * @return devuelve un puntero que apunta a la zona de memoria reservada para
+ * los datos de la estructura ListaAlumnos
+ */
+ListaAlumnos *crearLista(const int capacidad) {
+    ListaAlumnos *lista = new ListaAlumnos;
+    lista->capacidad = capacidad;
+    lista->num = 0;
+    lista->alumnos = new Alumno *[lista->capacidad];
+    return lista;
+}
 
 
 /**
@@ -113,25 +137,6 @@ bool addAlumno(ListaAlumnos *lista, Alumno *alumno) {
     return true;
 }
 
-/**
- * A partir de valor entero proporcionado como argumento de llamada que indica
- * el máximo número de alumnos que queremos alojar en la lista
- * reserva memoria dinámicamente para crear la estructura ListaAlumnos
- * e inicializa apropiadamente sus campos capacidad y num
- * además de reservar dinámicamente la memoria para los punteros a las
- * estructuras Alumno necesarias de manera contigua en memoria
- * @param capacidad Número máximo de alumnos que queremos que tenga la lista
- * @return devuelve un puntero que apunta a la zona de memoria reservada para
- * los datos de la estructura ListaAlumnos
- */
-ListaAlumnos *crearLista(const int capacidad) {
-    ListaAlumnos *lista = new ListaAlumnos;
-    lista->capacidad = capacidad;
-    lista->num = 0;
-    lista->alumnos = new Alumno *[lista->capacidad];
-    return lista;
-}
-
 
 /**
  * Calcula la nota media de los alumnos de una lista de alumnos proporcionada
@@ -146,6 +151,7 @@ float getNotaMedia(const ListaAlumnos* lista) {
     }
     return suma / lista->num;
 }
+
 
 /**
  * Recorre la lista de alumnos para encontrar el alumno con mayor nota de todos
@@ -165,6 +171,7 @@ Alumno *getAlumnoMaxNota(const ListaAlumnos *lista) {
     }
     return max;
 }
+
 
 /**
  * Si la lista esta vacía, no existe ningún alumno en ella que este suspendido,
@@ -260,6 +267,7 @@ void printNotaMedia(const ListaAlumnos *lista) {
     cout << "Nota media: " << media << endl;
 }
 
+
 /**
  * Caso de uso de la aplicación elegido por el usuario mediante menu
  * cuando quiere visualizar los datos del alumno con mayor nota
@@ -282,6 +290,7 @@ void printAlumnoMaxNota(const ListaAlumnos *lista) {
         printAlumno(alumno);
     }
 }
+
 
 /**
  * Caso de uso de la aplicación elegido por el usuario mediante menu
@@ -319,6 +328,7 @@ void printMenu() {
     cout << "0. Salir" << endl;
     cout << "Opcion:";
 }
+
 
 /**
  * método principal y de entrada a la aplicación
