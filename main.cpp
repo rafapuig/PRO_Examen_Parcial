@@ -360,7 +360,7 @@ int main() {
         }
     } while (opcion != 0);
 
-    delete lista->alumnos;
+    delete[] lista->alumnos;
     delete lista;
     return 0;
 }
