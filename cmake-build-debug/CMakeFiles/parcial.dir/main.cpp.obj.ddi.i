@@ -42468,21 +42468,20 @@ namespace std
 # 2 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp" 2
 
 
-# 3 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+
+# 4 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 using namespace std;
+
+
+
+
 
 
 struct Alumno {
     string nombre;
     float nota;
 };
-
-
-
-
-
-
-
+# 23 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 float inputNota() {
     float nota;
     do {
@@ -42491,13 +42490,7 @@ float inputNota() {
     } while (nota < 0 || nota > 10);
     return nota;
 }
-
-
-
-
-
-
-
+# 39 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 string inputNombre() {
     string nombre;
     do {
@@ -42506,7 +42499,7 @@ string inputNombre() {
     } while (nombre.empty());
     return nombre;
 }
-# 49 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 58 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 Alumno *inputAlumno() {
     Alumno *alumno = new Alumno;
     cout << "Introduce datos del alumno...\n";
@@ -42514,28 +42507,13 @@ Alumno *inputAlumno() {
     alumno->nota = inputNota();
     return alumno;
 }
-# 65 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 75 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 struct ListaAlumnos {
     int capacidad;
     int num;
     Alumno **alumnos;
 };
-# 79 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-bool estaVacia(const ListaAlumnos *lista) {
-    return lista->num == 0;
-}
-# 91 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-bool estaLlena(ListaAlumnos *lista) {
-    return lista->num == lista->capacidad;
-}
-# 103 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-bool addAlumno(ListaAlumnos *lista, Alumno *alumno) {
-    if (estaLlena(lista)) return false;
-    lista->alumnos[lista->num] = alumno;
-    lista->num++;
-    return true;
-}
-# 121 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 93 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 ListaAlumnos *crearLista(const int capacidad) {
     ListaAlumnos *lista = new ListaAlumnos;
     lista->capacidad = capacidad;
@@ -42543,7 +42521,22 @@ ListaAlumnos *crearLista(const int capacidad) {
     lista->alumnos = new Alumno *[lista->capacidad];
     return lista;
 }
-# 136 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 109 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+bool estaVacia(const ListaAlumnos *lista) {
+    return lista->num == 0;
+}
+# 121 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+bool estaLlena(const ListaAlumnos *lista) {
+    return lista->num == lista->capacidad;
+}
+# 133 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+bool addAlumno(ListaAlumnos *lista, Alumno *alumno) {
+    if (estaLlena(lista)) return false;
+    lista->alumnos[lista->num] = alumno;
+    lista->num++;
+    return true;
+}
+# 147 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 float getNotaMedia(const ListaAlumnos* lista) {
     float suma = 0;
     for (int i = 0; i < lista->num; i++) {
@@ -42551,7 +42544,7 @@ float getNotaMedia(const ListaAlumnos* lista) {
     }
     return suma / lista->num;
 }
-# 152 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 164 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 Alumno *getAlumnoMaxNota(const ListaAlumnos *lista) {
     if (estaVacia(lista)) return nullptr;
     Alumno *max = lista->alumnos[0];
@@ -42562,7 +42555,7 @@ Alumno *getAlumnoMaxNota(const ListaAlumnos *lista) {
     }
     return max;
 }
-# 176 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 189 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 bool existeAlumnoSuspenso(const ListaAlumnos *lista) {
     if (estaVacia(lista)) return false;
     for (int i = 0; i < lista->num; i++) {
@@ -42572,7 +42565,7 @@ bool existeAlumnoSuspenso(const ListaAlumnos *lista) {
     }
     return false;
 }
-# 196 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 209 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 void addAlumno(ListaAlumnos *lista) {
     if (estaLlena(lista)) {
         std::cout << "Lista llena, no se puede insertar el alumno" << endl;
@@ -42580,23 +42573,23 @@ void addAlumno(ListaAlumnos *lista) {
     }
     addAlumno(lista, inputAlumno());
 }
-# 211 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-void printAlumno(const Alumno *alumno) {
+# 224 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+void printAlumno(const Alumno* alumno) {
     cout << "Nombre:" << alumno->nombre << "\tNota:" << alumno->nota << endl;
 }
-# 225 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-void printLista(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
+# 238 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+void printLista(const ListaAlumnos& lista) {
+    if (estaVacia(&lista)) {
         cout << "Lista vacia!!!" << endl;
         return;
     }
     cout << "ALUMNOS:" << endl;
-    for (int i = 0; i < lista->num; i++) {
-        printAlumno(lista->alumnos[i]);
+    for (int i = 0; i < lista.num; i++) {
+        printAlumno(lista.alumnos[i]);
     }
 }
-# 248 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-void printNotaMedia(ListaAlumnos *lista) {
+# 261 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+void printNotaMedia(const ListaAlumnos *lista) {
     if (estaVacia(lista)) {
         cout << "Lista vacia, no se puede calcular ninguna media!!!" << endl;
         return;
@@ -42604,8 +42597,8 @@ void printNotaMedia(ListaAlumnos *lista) {
     float media = getNotaMedia(lista);
     cout << "Nota media: " << media << endl;
 }
-# 269 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-void printAlumnoMaxNota(ListaAlumnos *lista) {
+# 283 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+void printAlumnoMaxNota(const ListaAlumnos *lista) {
     if (estaVacia(lista)) {
         cout << "Lista vacia, no se buscara alumno!!!" << endl;
         return;
@@ -42615,13 +42608,13 @@ void printAlumnoMaxNota(ListaAlumnos *lista) {
         printAlumno(alumno);
     }
 }
-# 293 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
-void printCheckAlumnoSuspenso(ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
+# 308 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+void printCheckAlumnoSuspenso(const ListaAlumnos& lista) {
+    if (estaVacia(&lista)) {
         cout << "Lista vacia, no procede!!!" << endl;
         return;
     }
-    bool alumnoSuspenso = existeAlumnoSuspenso(lista);
+    bool alumnoSuspenso = existeAlumnoSuspenso(&lista);
     cout << "Hay alumnos suspendidos: " << (alumnoSuspenso ? "Si" : "No") << endl;
 }
 
@@ -42639,7 +42632,7 @@ void printMenu() {
     cout << "0. Salir" << endl;
     cout << "Opcion:";
 }
-# 334 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
+# 350 "C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/main.cpp"
 int main() {
     constexpr int MAX_ALUMNOS = 10;
     ListaAlumnos *lista = crearLista(MAX_ALUMNOS);
@@ -42652,18 +42645,22 @@ int main() {
         switch (opcion) {
             case 1: addAlumno(lista);
                 break;
-            case 2: printLista(lista);
+            case 2: printLista(*lista);
                 break;
             case 3: printNotaMedia(lista);
                 break;
             case 4: printAlumnoMaxNota(lista);
                 break;
-            case 5: printCheckAlumnoSuspenso(lista);
+            case 5: printCheckAlumnoSuspenso(*lista);
                 break;
         }
     } while (opcion != 0);
 
-    delete lista->alumnos;
+    for (int i = 0; i < lista->num; ++i) {
+        delete lista->alumnos[i];
+    }
+
+    delete[] lista->alumnos;
     delete lista;
     return 0;
 }

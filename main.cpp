@@ -204,24 +204,25 @@ bool existeAlumnoSuspenso(const ListaAlumnos *lista) {
  * Si lo está debe mostrar un mensaje de error y terminar
  * Si no, procede con la llamada a las instrucciones que insertan un nuevo
  * alumno en la lista
- * @param lista Puntero a una estructura de tipo ListaAlumnos
+ * @param lista Referencia a una estructura de tipo ListaAlumnos
  */
-void addAlumno(ListaAlumnos *lista) {
-    if (estaLlena(lista)) {
+void addAlumno(ListaAlumnos& lista) {
+    if (estaLlena(&lista)) {
         std::cout << "Lista llena, no se puede insertar el alumno" << endl;
         return;
     }
-    addAlumno(lista, inputAlumno());
+    addAlumno(&lista, inputAlumno());
 }
 
 
 /**
  * Imprime por consola en una línea de texto los datos de nombre y nota del
  * alumno proporcionado como argumento de llamada
- * @param alumno Puntero a estructura de tipo Alumno que apunta
+ * @param alumno Puntero a estructura constante de tipo Alumno que apunta
  * al alumno que se va a mostrar por la consola
  */
-void printAlumno(const Alumno *alumno) {
+void printAlumno(const Alumno* alumno) {
+    if (alumno == nullptr) return;
     cout << "Nombre:" << alumno->nombre << "\tNota:" << alumno->nota << endl;
 }
 
@@ -233,16 +234,16 @@ void printAlumno(const Alumno *alumno) {
  * Si está vacía debe mostrar un mensaje indicando que está vacía
  * Si no, delegando en el método printAlumno recorre e imprime uno tras
  * otro los alumnos de la lista
- * @param lista Puntero a una estructura de tipo ListaAlumnos
+ * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printLista(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
+void printLista(const ListaAlumnos& lista) {
+    if (estaVacia(&lista)) {
         cout << "Lista vacia!!!" << endl;
         return;
     }
     cout << "ALUMNOS:" << endl;
-    for (int i = 0; i < lista->num; i++) {
-        printAlumno(lista->alumnos[i]);
+    for (int i = 0; i < lista.num; i++) {
+        printAlumno(lista.alumnos[i]);
     }
 }
 
@@ -256,14 +257,14 @@ void printLista(const ListaAlumnos *lista) {
  * Si no, obtiene la media mediante una llamada al método que devuelve
  * la nota media de los alumnos de una lista de alumnos definido anteriormente
  * y la imprime por consola
- * @param lista Puntero a una estructura de tipo ListaAlumnos
+ * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printNotaMedia(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
+void printNotaMedia(const ListaAlumnos& lista) {
+    if (estaVacia(&lista)) {
         cout << "Lista vacia, no se puede calcular ninguna media!!!" << endl;
         return;
     }
-    float media = getNotaMedia(lista);
+    const float media = getNotaMedia(&lista);
     cout << "Nota media: " << media << endl;
 }
 
@@ -278,14 +279,14 @@ void printNotaMedia(const ListaAlumnos *lista) {
  * mediante una llamada al método que busca el alumno con la nota maxima
  * en una lista y si este puntero no es un puntero nulo imprime los datos
  * del alumno apoyándose el el método para imprimir los datos de un alumno
- * @param lista Puntero a una estructura de tipo ListaAlumnos
+ * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printAlumnoMaxNota(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
+void printAlumnoMaxNota(const ListaAlumnos& lista) {
+    if (estaVacia(&lista)) {
         cout << "Lista vacia, no se buscara alumno!!!" << endl;
         return;
     }
-    Alumno *alumno = getAlumnoMaxNota(lista);
+    Alumno *alumno = getAlumnoMaxNota(&lista);
     if (alumno != nullptr) {
         printAlumno(alumno);
     }
@@ -303,14 +304,14 @@ void printAlumnoMaxNota(const ListaAlumnos *lista) {
  * de alumnos si existe alguno suspenso o no obtiene el resultado y muestra por
  * pantalla un texto que diga Si en caso de ser verdadero o No en caso de ser falso
  * el resultado
- * @param lista Puntero a una estructura de tipo ListaAlumnos
+ * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printCheckAlumnoSuspenso(const ListaAlumnos *lista) {
-    if (estaVacia(lista)) {
+void printCheckAlumnoSuspenso(const ListaAlumnos& lista) {
+    if (estaVacia(&lista)) {
         cout << "Lista vacia, no procede!!!" << endl;
         return;
     }
-    bool alumnoSuspenso = existeAlumnoSuspenso(lista);
+    bool alumnoSuspenso = existeAlumnoSuspenso(&lista);
     cout << "Hay alumnos suspendidos: " << (alumnoSuspenso ? "Si" : "No") << endl;
 }
 
@@ -357,18 +358,23 @@ int main() {
         cin >> opcion;
         cin.get();
         switch (opcion) {
-            case 1: addAlumno(lista);
+            case 1: addAlumno(*lista);
                 break;
-            case 2: printLista(lista);
+            case 2: printLista(*lista);
                 break;
-            case 3: printNotaMedia(lista);
+            case 3: printNotaMedia(*lista);
                 break;
-            case 4: printAlumnoMaxNota(lista);
+            case 4: printAlumnoMaxNota(*lista);
                 break;
-            case 5: printCheckAlumnoSuspenso(lista);
+            case 5: printCheckAlumnoSuspenso(*lista);
                 break;
+            default: cout << "Opcion incorrecta!" << endl;
         }
     } while (opcion != 0);
+
+    for (int i = 0; i < lista->num; ++i) {
+        delete lista->alumnos[i];
+    }
 
     delete[] lista->alumnos;
     delete lista;
