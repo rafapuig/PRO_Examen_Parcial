@@ -8,7 +8,7 @@ using namespace std;
  * Consta de un campo "nombre" de tipo string
  * y campo "nota" de tipo float
  */
-struct Alumno /*...*/ //TODO
+struct Alumno /* TODO... */
 
 
 /**
@@ -42,7 +42,7 @@ string inputNombre() {
  * @return Puntero a la memoria reservada dinámicamente
  * para almacenar una estructura de tipo Alumno
  */
-/*...*/ inputAlumno() {
+/* TODO...*/ inputAlumno() {
     //TODO
 }
 
@@ -55,8 +55,8 @@ string inputNombre() {
  * El campo alumnos servirá para apuntar a memoria dinámica, concretamente
  * debe manejar un "array" de punteros a estructura de tipo Alumno
  */
-//TODO
-struct ListaAlumno /*...*/
+
+struct ListaAlumno /* TODO...*/
 
 
 /**
@@ -70,7 +70,7 @@ struct ListaAlumno /*...*/
  * @return devuelve un puntero que apunta a la zona de memoria reservada para
  * los datos de la estructura ListaAlumnos
  */
-/*...*/ crearLista(/*...*/ capacidad) {
+/* TODO...*/ crearLista(/* TODO...*/ capacidad) {
     //TODO
 }
 
@@ -82,7 +82,7 @@ struct ListaAlumno /*...*/
  * @return valor bool verdadero si la lista no tiene ningún alumno añadido o
  * falso si la lista ya tiene al menos un alumno
  */
-/*...*/ estaVacia(/*...*/ lista) {
+/* TODO...*/ estaVacia(/* TODO...*/ lista) {
     //TODO
 }
 
@@ -94,7 +94,7 @@ struct ListaAlumno /*...*/
  * @return Valor booleano verdadero si la lista ha llegado al máximo de su capacidad o
  * falso si la lista todavía permite añadir algún alumno más
  */
-/*...*/ estaLlena(/*...*/ lista) {
+/* TODO...*/ estaLlena(/* TODO...*/ lista) {
     //TODO
 }
 
@@ -106,7 +106,7 @@ struct ListaAlumno /*...*/
  * @return Verdadero si se ha podido añadir el alumno porque la lista no estaba
  * llena todavía o falso en caso contrario
  */
-/*...*/ addAlumno(/*...*/lista, /* .. */ alumno) {
+/* TODO...*/ addAlumno(/* TODO...*/lista, /* TODO... */ alumno) {
     //TODO
 }
 
@@ -117,7 +117,7 @@ struct ListaAlumno /*...*/
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  * @return Un float con el valor calculado de la nota media de los alumnos
  */
-/*...*/ getNotaMedia(/*...*/ lista) {
+/* TODO...*/ getNotaMedia(/* TODO...*/ lista) {
     //TODO
 }
 
@@ -130,7 +130,7 @@ struct ListaAlumno /*...*/
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  * @return Un puntero a la estructura de tipo Alumno que en la lista tiene mayor nota
  */
-/*...*/ getAlumnoMaxNota(/*...*/ lista) {
+/* TODO...*/ getAlumnoMaxNota(/* TODO...*/ lista) {
     //TODO
 }
 
@@ -148,7 +148,7 @@ struct ListaAlumno /*...*/
  * @return Un bool con valor true si en la lista al menos un alumno tiene una
  * nota inferior a 5 y falso en caso contrario o si la lista esta vacía
  */
-/*...*/ existeAlumnoSuspenso(/*...*/ lista) {
+/* TODO...*/ existeAlumnoSuspenso(/* TODO...*/ lista) {
     //TODO
 }
 
@@ -162,7 +162,7 @@ struct ListaAlumno /*...*/
  * alumno en la lista
  * @param lista Referencia a una estructura de tipo ListaAlumnos
  */
-/*...*/ addAlumno(/*...*/ lista) {
+/* TODO...*/ addAlumno(/* TODO...*/ lista) {
     //TODO
 }
 
@@ -173,7 +173,7 @@ struct ListaAlumno /*...*/
  * @param alumno Puntero a estructura constante de tipo Alumno que apunta
  * al alumno que se va a mostrar por la consola
  */
-void printAlumno(/* ... */ alumno) {
+void printAlumno(/* TODO... */ alumno) {
     //TODO
 }
 
@@ -187,7 +187,7 @@ void printAlumno(/* ... */ alumno) {
  * otro los alumnos de la lista
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printLista(/* ... */ lista) {
+void printLista(/* TODO... */ lista) {
     //TODO
 }
 
@@ -203,7 +203,7 @@ void printLista(/* ... */ lista) {
  * y la imprime por consola
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printNotaMedia(/* ... */ lista) {
+void printNotaMedia(/* TODO... */ lista) {
     //TODO
 }
 
@@ -220,7 +220,7 @@ void printNotaMedia(/* ... */ lista) {
  * del alumno apoyándose el el método para imprimir los datos de un alumno
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printAlumnoMaxNota(/* ... */ lista) {
+void printAlumnoMaxNota(/* TODO... */ lista) {
     //TODO
 }
 
@@ -238,7 +238,7 @@ void printAlumnoMaxNota(/* ... */ lista) {
  * el resultado
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printCheckAlumnoSuspenso(/* ... */ lista) {
+void printCheckAlumnoSuspenso(/* TODO ... */ lista) {
     //TODO
 }
 
@@ -279,11 +279,14 @@ int main() {
     constexpr int MAX_ALUMNOS = 10;
 
     // Crear la lista de alumnos y guardar en una variable
+    // TODO
 
 
     // Bucle del menu de opciones y proceso de la opción elegida
+    // TODO
 
     // liberación de la memoria
+    // TODO
 
     return 0;
 }
