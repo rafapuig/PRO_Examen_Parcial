@@ -41,6 +41,9 @@ string inputNombre() {
     do {
         cout << "Introduce un nombre para el alumno:";
         getline(cin, nombre);
+        if (nombre.empty()) {
+            cout << "El nombre no puede quedar vacio!!!\n";
+        }
     } while (nombre.empty());
     return nombre;
 }
