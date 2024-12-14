@@ -9,8 +9,8 @@ using namespace std;
  * y campo "nota" de tipo float
  */
 struct Alumno {
-    string nombre;  // Campo nombre (string)
-    float nota;     // Campo nota (float)
+    string nombre; // Campo nombre (string)
+    float nota; // Campo nota (float)
 };
 
 
@@ -78,6 +78,24 @@ struct ListaAlumnos {
     Alumno **alumnos;
 };
 
+/**
+ * Pide al usuario la capacidad maxima de almacenar Alumnos en una lista
+ * Comprueba que el valor es un número positivo mayor que cero,
+ * si no es así, vuelve a preguntar al usuario
+ * @return Un valor positivo distinto de cero
+ */
+int inputCapacidad() {
+    int capacidad;
+    do {
+        cout << "Introduce capacidad maxima de la lista de alumnos:";
+        cin >> capacidad;
+        if (capacidad <= 0) {
+            cout << "La capacidad tiene que ser un valor positivo!\n";
+        }
+    } while (capacidad <= 0);
+    return capacidad;
+}
+
 
 /**
  * A partir de valor entero proporcionado como argumento de llamada que indica
@@ -98,6 +116,26 @@ ListaAlumnos *crearLista(const int capacidad) {
     return lista;
 }
 
+/**
+ * Libera toda la memoria reservada por la lista de alumnos
+ * Para ello, libera
+ * la memoria reservada para cada Alumno
+ * la memoria reservada para el "array" de punteros a estructura Alumno
+ * la memoria de los campos de la propia estructura ListaAlumnos
+ * @param lista Puntero a una estructura de tipo ListaAlumnos
+ */
+void destruirLista(ListaAlumnos *lista) {
+    if (lista == nullptr) return;
+    for (int i = 0; i < lista->num; ++i) {
+        delete lista->alumnos[i]; // Liberamos la memoria reservada por el alumno i-esimo de la lista
+        lista->alumnos[i] = nullptr; //Hacer que el puntero no quede colgante
+    }
+
+    delete[] lista->alumnos; // Libera los punteros a estructuras Alumno
+    lista->alumnos = nullptr;
+    delete lista; // Libera la memoria reservada por la estructura ListaAlumnos
+}
+
 
 /**
  * Método que comprueba si una lista proporcionada como argumento de llamada
@@ -106,20 +144,25 @@ ListaAlumnos *crearLista(const int capacidad) {
  * @return valor bool verdadero si la lista no tiene ningún alumno añadido o
  * falso si la lista ya tiene al menos un alumno
  */
-bool estaVacia(const ListaAlumnos *lista) {
-    return lista->num == 0;
+inline bool estaVacia(const ListaAlumnos *lista) {
+    //Aquí aprovechamos que el operador or es por cortocircuito,
+    //si lo primero es cierto no se evalúa lo segundo
+    //Ya que si no hay lista, no hay numero que comprobar si es cero
+    return lista == nullptr or lista->num == 0;
 }
 
 
 /**
  * Método que comprueba si una lista proporcionada como argumento de llamada
- * tiene el maximo de alumnos que puede manejar ya añadidos
+ * tiene el máximo de alumnos que puede manejar ya añadidos
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  * @return Valor booleano verdadero si la lista ha llegado al máximo de su capacidad o
  * falso si la lista todavía permite añadir algún alumno más
  */
-bool estaLlena(const ListaAlumnos *lista) {
-    return lista->num == lista->capacidad;
+inline bool estaLlena(const ListaAlumnos *lista) {
+    // Aprovechamos que el operador and cortocircuita y no
+    // sigue evaluando el segundo operando (derecha) si el primero es falso
+    return lista != nullptr and lista->num == lista->capacidad;
 }
 
 
@@ -131,9 +174,9 @@ bool estaLlena(const ListaAlumnos *lista) {
  * llena todavía o falso en caso contrario
  */
 bool addAlumno(ListaAlumnos *lista, Alumno *alumno) {
-    if (estaLlena(lista)) return false;
-    lista->alumnos[lista->num] = alumno;
-    lista->num++;
+    if (alumno == nullptr) return false; // Si no hay alumno no hay nada que insertar
+    if (estaLlena(lista)) return false; // Si la lista está llena tampoco
+    lista->alumnos[lista->num++] = alumno; //Copia la dirección del alumno e incrementa num
     return true;
 }
 
@@ -144,12 +187,13 @@ bool addAlumno(ListaAlumnos *lista, Alumno *alumno) {
  * @param lista Puntero a una estructura de tipo ListaAlumnos
  * @return Un float con el valor calculado de la nota media de los alumnos
  */
-float getNotaMedia(const ListaAlumnos* lista) {
+float getNotaMedia(const ListaAlumnos *lista) {
+    if (estaVacia(lista)) return 0;
     float suma = 0;
     for (int i = 0; i < lista->num; i++) {
-        suma += lista->alumnos[i]->nota;
+        suma += lista->alumnos[i]->nota; //Sumamos las notas de todos los alumnos
     }
-    return suma / lista->num;
+    return suma / static_cast<float>(lista->num); //suma dividida por total alumnos
 }
 
 
@@ -163,10 +207,10 @@ float getNotaMedia(const ListaAlumnos* lista) {
  */
 Alumno *getAlumnoMaxNota(const ListaAlumnos *lista) {
     if (estaVacia(lista)) return nullptr;
-    Alumno *max = lista->alumnos[0];
-    for (int i = 1; i < lista->num; i++) {
-        if (lista->alumnos[i]->nota > max->nota) {
-            max = lista->alumnos[i];
+    Alumno *max = lista->alumnos[0]; // Asumimos que el primer alumno es el de la nota maxima
+    for (int i = 1; i < lista->num; i++) { // Comparamos con la nota de los siguientes
+        if (lista->alumnos[i]->nota > max->nota) { // Si la nota del alumno i-esimo es mayor
+            max = lista->alumnos[i]; // Este alumno i-esimo se convierte en el alumno de max nota
         }
     }
     return max;
@@ -189,9 +233,7 @@ Alumno *getAlumnoMaxNota(const ListaAlumnos *lista) {
 bool existeAlumnoSuspenso(const ListaAlumnos *lista) {
     if (estaVacia(lista)) return false;
     for (int i = 0; i < lista->num; i++) {
-        if (lista->alumnos[i]->nota < 5) {
-            return true;
-        }
+        if (lista->alumnos[i]->nota < 5) return true;
     }
     return false;
 }
@@ -206,7 +248,7 @@ bool existeAlumnoSuspenso(const ListaAlumnos *lista) {
  * alumno en la lista
  * @param lista Referencia a una estructura de tipo ListaAlumnos
  */
-void addAlumno(ListaAlumnos& lista) {
+void addAlumno(ListaAlumnos &lista) {
     if (estaLlena(&lista)) {
         std::cout << "Lista llena, no se puede insertar el alumno" << endl;
         return;
@@ -221,7 +263,7 @@ void addAlumno(ListaAlumnos& lista) {
  * @param alumno Puntero a estructura constante de tipo Alumno que apunta
  * al alumno que se va a mostrar por la consola
  */
-void printAlumno(const Alumno* alumno) {
+void printAlumno(const Alumno *alumno) {
     if (alumno == nullptr) return;
     cout << "Nombre:" << alumno->nombre << "\tNota:" << alumno->nota << endl;
 }
@@ -236,7 +278,7 @@ void printAlumno(const Alumno* alumno) {
  * otro los alumnos de la lista
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printLista(const ListaAlumnos& lista) {
+void printLista(const ListaAlumnos &lista) {
     if (estaVacia(&lista)) {
         cout << "Lista vacia!!!" << endl;
         return;
@@ -259,7 +301,7 @@ void printLista(const ListaAlumnos& lista) {
  * y la imprime por consola
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printNotaMedia(const ListaAlumnos& lista) {
+void printNotaMedia(const ListaAlumnos &lista) {
     if (estaVacia(&lista)) {
         cout << "Lista vacia, no se puede calcular ninguna media!!!" << endl;
         return;
@@ -281,7 +323,7 @@ void printNotaMedia(const ListaAlumnos& lista) {
  * del alumno apoyándose el el método para imprimir los datos de un alumno
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printAlumnoMaxNota(const ListaAlumnos& lista) {
+void printAlumnoMaxNota(const ListaAlumnos &lista) {
     if (estaVacia(&lista)) {
         cout << "Lista vacia, no se buscara alumno!!!" << endl;
         return;
@@ -306,7 +348,7 @@ void printAlumnoMaxNota(const ListaAlumnos& lista) {
  * el resultado
  * @param lista Referencia constante a una estructura de tipo ListaAlumnos
  */
-void printCheckAlumnoSuspenso(const ListaAlumnos& lista) {
+void printCheckAlumnoSuspenso(const ListaAlumnos &lista) {
     if (estaVacia(&lista)) {
         cout << "Lista vacia, no procede!!!" << endl;
         return;
@@ -349,8 +391,8 @@ void printMenu() {
  * @return
  */
 int main() {
-    constexpr int MAX_ALUMNOS = 10;
-    ListaAlumnos *lista = crearLista(MAX_ALUMNOS);
+    const int capacidad = inputCapacidad();
+    ListaAlumnos *lista = crearLista(capacidad);
 
     int opcion;
     do {
@@ -372,11 +414,7 @@ int main() {
         }
     } while (opcion != 0);
 
-    for (int i = 0; i < lista->num; ++i) {
-        delete lista->alumnos[i];
-    }
-
-    delete[] lista->alumnos;
-    delete lista;
+    destruirLista(lista);
+    lista = nullptr;
     return 0;
 }
