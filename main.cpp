@@ -413,6 +413,8 @@ int main() {
                 break;
             case 5: printCheckAlumnoSuspenso(*lista);
                 break;
+            case 0:
+                cout << "Saliendo del programa...";
             default: cout << "Opcion incorrecta!" << endl;
         }
     } while (opcion != 0);

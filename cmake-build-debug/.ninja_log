@@ -47,3 +47,9 @@
 193	222	7559082846505323	CMakeFiles/parcial.dir/main.cpp.obj.modmap	72288631a04f4491
 223	889	7559082846805390	CMakeFiles/parcial.dir/main.cpp.obj	ed9154a32a06ac4e
 889	991	7559082853476663	parcial.exe	61aabd7b034f0f9c
+9	925	7559215963839568	CMakeFiles/parcial.dir/main.cpp.obj.ddi	5fe7e7b9f403957e
+925	951	7559215972996755	CMakeFiles/parcial.dir/CXX.dd	72288631a04f4491
+925	951	7559215972996755	C:/Users/rapui/OneDrive/Informatica/dev/cpp/PROG/parcial/cmake-build-debug/CMakeFiles/parcial.dir/CXXModules.json	72288631a04f4491
+925	951	7559215972996755	CMakeFiles/parcial.dir/main.cpp.obj.modmap	72288631a04f4491
+952	1569	7559215973266841	CMakeFiles/parcial.dir/main.cpp.obj	ed9154a32a06ac4e
+1570	1837	7559215979443790	parcial.exe	61aabd7b034f0f9c
