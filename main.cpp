@@ -415,6 +415,7 @@ int main() {
                 break;
             case 0:
                 cout << "Saliendo del programa...";
+                break;
             default: cout << "Opcion incorrecta!" << endl;
         }
     } while (opcion != 0);
